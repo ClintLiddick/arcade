@@ -581,7 +581,7 @@ __all__ = [
 __version__ = VERSION
 
 # Piggyback on pyglet's doc run detection
-if not getattr(sys, 'is_pyglet_doc_run', False):
+if not getattr(sys, 'arcade_no_autoload_fonts', False) and not getattr(sys, 'is_pyglet_doc_run', False):
     # Auto load fonts
     load_font(":resources:fonts/ttf/Kenney Blocks.ttf")
     load_font(":resources:fonts/ttf/Kenney Future.ttf")
@@ -595,6 +595,7 @@ if not getattr(sys, 'is_pyglet_doc_run', False):
     load_font(":resources:fonts/ttf/Kenney Rocket.ttf")
     load_font(":resources:fonts/ttf/Kenney Rocket Square.ttf")
 
+if not getattr(sys, 'is_pyglet_doc_run', False):
     # Load additional game controller mappings to Pyglet
     try:
         mappings_file = resources.resolve_resource_path(":resources:gamecontrollerdb.txt")
